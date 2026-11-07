@@ -1,4 +1,4 @@
-/* NutriSync — AI 饮食 + 身体 + WHOOP 追踪 (单页 PWA)
+/* Eat Healthy — AI 饮食 + 身体 + WHOOP 追踪 (单页 PWA)
  * 数据全部保存在本机浏览器 (localStorage)。AI 有两种模式：
  *  1) claude.ai 托管页面：使用内置 Claude (sample capability)，不需要 API key
  *  2) 自己托管 (GitHub Pages 等)：在设置里填自己的 API key (Anthropic / OpenAI / Gemini / OpenAI-compatible)
@@ -627,7 +627,7 @@ function vSettings() {
     <div class="grid2"><button class="btn" data-act="export">⬇️ 导出 JSON</button><button class="btn" data-act="import">⬆️ 导入 JSON</button></div>
     <button class="btn danger block" data-act="wipe" style="margin-top:10px">清除全部数据</button>
   </div>
-  <div class="small muted" style="text-align:center;padding:10px">NutriSync · 估算仅供参考，不构成医疗建议</div>`;
+  <div class="small muted" style="text-align:center;padding:10px">Eat Healthy · 估算仅供参考，不构成医疗建议</div>`;
 }
 
 /* ---------------- 事件绑定 ---------------- */
@@ -682,8 +682,8 @@ function bind() {
   v.onchange = e => { if (e.target.id === 'sProv') { $('#baseWrap').classList.toggle('hidden', e.target.value !== 'custom'); $('#sModel').placeholder = AI.defaultModel(e.target.value); } };
 }
 async function exportJSON() {
-  const data = JSON.stringify({ app: 'NutriSync', exportedAt: new Date().toISOString(), ...DB, settings: { ...DB.settings, apiKey: '' } }, null, 1);
-  const filename = `nutrisync-backup-${todayStr()}.json`;
+  const data = JSON.stringify({ app: 'Eat Healthy', exportedAt: new Date().toISOString(), ...DB, settings: { ...DB.settings, apiKey: '' } }, null, 1);
+  const filename = `eat-healthy-backup-${todayStr()}.json`;
   try { if (window.claude?.use) { const dl = await window.claude.use('downloads'); if (dl) { await dl.save({ filename, data }); return toast('已导出 ✓'); } } } catch (e) { if (e && e.code && e.code !== 'not_granted') console.warn(e); }
   try { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([data], { type: 'application/json' })); a.download = filename; document.body.appendChild(a); a.click(); a.remove(); toast('已导出 ✓'); }
   catch { openModal(`<h3>导出</h3><div class="small muted">此环境不允许下载，请复制下面内容保存：</div><textarea style="min-height:200px;margin-top:8px">${esc(data)}</textarea><button class="btn primary block" id="cp" style="margin-top:10px">复制</button>`); $('#cp').onclick = async () => { try { await navigator.clipboard.writeText(data); toast('已复制 ✓'); } catch { toast('请手动长按选择复制'); } }; }
@@ -697,7 +697,7 @@ $('#whoopImgInput').addEventListener('change', e => { importWhoopScreenshot(e.ta
 $('#whoopJsonInput').addEventListener('change', async e => { const f = e.target.files[0]; e.target.value = ''; if (!f) return; try { const n = mergeWhoop(whoopFromJSON(JSON.parse(await f.text()))); closeModal(); toast(`已导入 ${n} 天 ✓`); render(); } catch (err) { toast('JSON 解析失败：' + err.message, 4000); } });
 $('#importInput').addEventListener('change', async e => {
   const f = e.target.files[0]; e.target.value = ''; if (!f) return;
-  try { const j = JSON.parse(await f.text()); if (!j.meals && !j.weights && !j.whoop) throw new Error('不是 NutriSync 备份文件');
+  try { const j = JSON.parse(await f.text()); if (!j.meals && !j.weights && !j.whoop) throw new Error('不是 Eat Healthy 备份文件');
     if (await confirmBox(`导入将合并 ${j.meals?.length || 0} 餐、${j.weights?.length || 0} 笔体重、${j.whoop?.length || 0} 天 WHOOP。继续？`, '导入')) {
       for (const m of j.meals || []) if (!DB.meals.find(x => x.id === m.id)) DB.meals.push(m);
       for (const w of j.weights || []) if (!DB.weights.find(x => x.date === w.date)) DB.weights.push(w);

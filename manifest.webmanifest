@@ -1,6 +1,6 @@
 {
-  "name": "NutriSync · AI 饮食与身体追踪",
-  "short_name": "NutriSync",
+  "name": "Eat Healthy · AI 饮食与身体追踪",
+  "short_name": "Eat Healthy",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
