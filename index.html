@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NutriSync">
+<title>NutriSync · AI 饮食与身体追踪</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><span class="logo">N</span><span>NutriSync</span></div>
+    <div class="ai-badge" id="aiBadge" title="AI 模式">AI: 检测中…</div>
+  </header>
+
+  <main id="view" class="view"></main>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="today"><span class="ic">🍽️</span>今日</button>
+    <button data-tab="trends"><span class="ic">📈</span>趋势</button>
+    <button data-tab="body"><span class="ic">⚖️</span>身体</button>
+    <button data-tab="whoop"><span class="ic">💤</span>WHOOP</button>
+    <button data-tab="insight"><span class="ic">🧠</span>洞察</button>
+    <button data-tab="settings"><span class="ic">⚙️</span>设置</button>
+  </nav>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+
+  <input type="file" id="photoInput" accept="image/*" capture="environment" hidden>
+  <input type="file" id="galleryInput" accept="image/*" hidden>
+  <input type="file" id="whoopCsvInput" accept=".csv,text/csv,.zip" hidden multiple>
+  <input type="file" id="whoopJsonInput" accept=".json,application/json" hidden>
+  <input type="file" id="whoopImgInput" accept="image/*" hidden>
+  <input type="file" id="importInput" accept=".json,application/json" hidden>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

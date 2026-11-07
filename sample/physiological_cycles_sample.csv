@@ -1,0 +1,6 @@
+Cycle start time,Cycle end time,Cycle timezone,Recovery score %,Resting heart rate (bpm),Heart rate variability (ms),Skin temp (celsius),Blood oxygen %,Day Strain,Energy burned (cal),Max HR (bpm),Average HR (bpm),Sleep onset,Wake onset,Sleep performance %,Respiratory rate (rpm),Asleep duration (min),In bed duration (min),Light sleep duration (min),Deep (SWS) duration (min),REM duration (min),Awake duration (min),Sleep need (min),Sleep debt (min),Sleep efficiency %,Sleep consistency %
+2026-11-01 23:10:00,2026-11-02 23:05:00,UTC+08:00,72,54,68,33.9,96,11.2,2410,152,71,2026-11-01 23:40:00,2026-11-02 06:50:00,88,14.8,395,430,210,85,100,35,460,20,92,80
+2026-11-02 23:05:00,2026-11-03 23:30:00,UTC+08:00,41,59,45,34.2,95,13.9,2690,165,76,2026-11-03 00:30:00,2026-11-03 07:05:00,66,15.6,335,395,205,55,75,60,480,55,85,72
+2026-11-03 23:30:00,2026-11-04 22:50:00,UTC+08:00,85,52,79,33.8,97,9.4,2250,140,68,2026-11-03 23:20:00,2026-11-04 07:10:00,95,14.5,440,470,215,105,120,30,455,10,94,84
+2026-11-04 22:50:00,2026-11-05 23:15:00,UTC+08:00,58,56,57,34.0,96,12.6,2530,158,73,2026-11-05 00:05:00,2026-11-05 06:55:00,76,15.1,370,410,200,70,100,40,470,40,90,78
+2026-11-05 23:15:00,2026-11-06 23:00:00,UTC+08:00,66,55,61,33.9,96,10.8,2380,149,70,2026-11-05 23:50:00,2026-11-06 07:00:00,82,14.9,390,425,205,80,105,35,462,25,92,81
